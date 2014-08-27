@@ -903,7 +903,7 @@ static void execchild(void *user_data) {
       addnewvar("ANDROID_ASSETS", "/system/app");
       addnewvar("TERM", "vt100");
       addnewvar("ASEC_MOUNTPOINT", "/mnt/asec");
-      addnewvar("HOME", "/data");
+      addnewvar("HOME", "/data/local/tmp/droidssh");
       addnewvar("ANDROID_BOOTLOGO", "1");
    } else
       addnewvar("PATH", DEFAULT_PATH);
