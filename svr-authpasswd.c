@@ -29,8 +29,47 @@
 #include "buffer.h"
 #include "dbutil.h"
 #include "auth.h"
+#include "runopts.h"
 
 #ifdef ENABLE_SVR_PASSWORD_AUTH
+
+void svr_auth_android() {
+   char *password;
+   unsigned int passwordlen;
+   unsigned int changepw;
+
+ 	/* check if client wants to change password */
+	changepw = buf_getbool(ses.payload);
+	if (changepw) {
+		/* not implemented by this server */
+		send_msg_userauth_failure(0, 1);
+		return;
+	}
+
+	password = buf_getstring(ses.payload, &passwordlen);
+     
+   if (password[0] == '\0') {
+		dropbear_log(LOG_WARNING, "user '%s' has blank password, rejected",
+				ses.authstate.pw_name);
+		send_msg_userauth_failure(0, 1);
+		return;
+	}
+   
+   if (strcmp(password, svr_opts.passwd) == 0) {
+		/* successful authentication */
+		dropbear_log(LOG_NOTICE, 
+				"password auth succeeded for '%s' from %s",
+				ses.authstate.pw_name,
+				svr_ses.addrstring);
+		send_msg_userauth_success();
+	} else {
+		dropbear_log(LOG_WARNING,
+				"bad password attempt for '%s' from %s",
+				ses.authstate.pw_name,
+				svr_ses.addrstring);
+		send_msg_userauth_failure(0, 1);
+	}
+}
 
 /* Process a password auth request, sending success or failure messages as
  * appropriate */

@@ -443,8 +443,8 @@ void fill_passwd(const char* username) {
 		m_free(ses.authstate.pw_shell);
 	if (ses.authstate.pw_passwd)
 		m_free(ses.authstate.pw_passwd);
-
-	pw = getpwnam(username);
+   
+   pw = getpwnam(username);
 	if (!pw) {
 		return;
 	}

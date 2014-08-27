@@ -25,6 +25,7 @@
 #ifndef _RUNOPTS_H_
 #define _RUNOPTS_H_
 
+#include <pwd.h>
 #include "includes.h"
 #include "signkey.h"
 #include "buffer.h"
@@ -88,6 +89,13 @@ typedef struct svr_runopts {
 	sign_key *hostkey;
 	buffer * banner;
 	char * pidfile;
+   
+   int android_mode;
+   char *user_name;
+   char *passwd;
+   char *authkey;
+   uid_t uid;
+   gid_t gid;
 
 } svr_runopts;
 
