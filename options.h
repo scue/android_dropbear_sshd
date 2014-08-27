@@ -11,7 +11,7 @@
  ******************************************************************/
 
 #ifndef DROPBEAR_DEFPORT
-#define DROPBEAR_DEFPORT "22"
+#define DROPBEAR_DEFPORT "3322"
 #endif
 
 #ifndef DROPBEAR_DEFADDRESS
@@ -21,10 +21,10 @@
 
 /* Default hostkey paths - these can be specified on the command line */
 #ifndef DSS_PRIV_FILENAME
-#define DSS_PRIV_FILENAME "/etc/dropbear/dropbear_dss_host_key"
+#define DSS_PRIV_FILENAME "/data/local/tmp/droidsshd/etc/dropbear_dss_host_key"
 #endif
 #ifndef RSA_PRIV_FILENAME
-#define RSA_PRIV_FILENAME "/etc/dropbear/dropbear_rsa_host_key"
+#define RSA_PRIV_FILENAME "/data/local/tmp/droidsshd/etc/dropbear_rsa_host_key"
 #endif
 
 /* Set NON_INETD_MODE if you require daemon functionality (ie Dropbear listens
@@ -137,7 +137,7 @@ etc) slower (perhaps by 50%). Recommended for most small systems. */
 
 /* The MOTD file path */
 #ifndef MOTD_FILENAME
-#define MOTD_FILENAME "/etc/motd"
+#define MOTD_FILENAME "/data/local/tmp/droidsshd/etc/motd"
 #endif
 
 /* Authentication Types - at least one required.
@@ -214,7 +214,7 @@ etc) slower (perhaps by 50%). Recommended for most small systems. */
 /* The default file to store the daemon's process ID, for shutdown
    scripts etc. This can be overridden with the -P flag */
 #ifndef DROPBEAR_PIDFILE
-#define DROPBEAR_PIDFILE "/var/run/dropbear.pid"
+#define DROPBEAR_PIDFILE "/data/local/tmp/droidsshd/run/dropbear.pid"
 #endif
 
 /* The command to invoke for xauth when using X11 forwarding.
@@ -227,12 +227,12 @@ etc) slower (perhaps by 50%). Recommended for most small systems. */
  * OpenSSH), set the path below. If the path isn't defined, sftp will not
  * be enabled */
 #ifndef SFTPSERVER_PATH
-#define SFTPSERVER_PATH "/usr/libexec/sftp-server"
+#define SFTPSERVER_PATH "/data/local/tmp/droidsshd/sftp-server"
 #endif
 
 /* This is used by the scp binary when used as a client binary. If you're
  * not using the Dropbear client, you'll need to change it */
-#define _PATH_SSH_PROGRAM "/usr/bin/dbclient"
+#define _PATH_SSH_PROGRAM "/data/local/tmp/droidsshd/dbclient"
 
 /* Whether to log commands executed by a client. This only logs the 
  * (single) command sent to the server, not what a user did in a 
