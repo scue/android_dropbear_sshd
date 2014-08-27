@@ -886,15 +886,25 @@ static void execchild(void *user_data) {
 	addnewvar("HOME", ses.authstate.pw_dir);
 	addnewvar("SHELL", get_user_shell());
    if (svr_opts.android_mode) {
-      addnewvar("PATH", "/sbin:/system/sbin:/system/bin:/system/xbin");
-      addnewvar("ANDROID_ASSETS", "/system/app");
-      addnewvar("ANDROID_BOOTLOGO", "1");
+      addnewvar("LOCAL_ENV_CURR_MODEM", "/dev/block/platform/msm_sdcc.1/by-name/modem1");
+      addnewvar("LOOP_MOUNTPOINT", "/mnt/obb");
+      addnewvar("LD_LIBRARY_PATH", "/vendor/lib:/system/lib");
+      addnewvar("BOOTCLASSPATH", "/system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/framework_ext.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/qcom.fmradio.jar");
+      addnewvar("PATH", "/data/local/tmp/dropbear:/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin");
+      addnewvar("LOCAL_ENV_CURR_SYSTEM", "/dev/block/platform/msm_sdcc.1/by-name/system1");
+      addnewvar("MKSH", "/system/bin/sh");
       addnewvar("ANDROID_DATA", "/data");
-      addnewvar("ANDROID_PROPERTY_WORKSPACE", "10,32768");
       addnewvar("ANDROID_ROOT", "/system");
-      addnewvar("BOOTCLASSPATH", "/system/framework/core.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/android.policy.jar:/system/framework/services.jar");
-      addnewvar("EXTERNAL_STORAGE", "/sdcard");
-      addnewvar("LD_LIBRARY_PATH", "/system/lib");
+      addnewvar("HOSTNAME", "android");
+      addnewvar("SHELL", "/system/bin/sh");
+      addnewvar("ANDROID_SOCKET_adbd", "9");
+      addnewvar("ANDROID_PROPERTY_WORKSPACE", "8,65536");
+      addnewvar("EXTERNAL_STORAGE", "/storage/sdcard0");
+      addnewvar("ANDROID_ASSETS", "/system/app");
+      addnewvar("TERM", "vt100");
+      addnewvar("ASEC_MOUNTPOINT", "/mnt/asec");
+      addnewvar("HOME", "/data");
+      addnewvar("ANDROID_BOOTLOGO", "1");
    } else
       addnewvar("PATH", DEFAULT_PATH);
 	if (chansess->term != NULL) {
