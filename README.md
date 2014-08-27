@@ -33,7 +33,7 @@ sudo apt-get install gcc-arm-linux-gnueabi
 
 # build
 ```
-export STATIC=1 MULTI=1 CC=arm-linux-eabi-gcc SCPPROGRESS=0 PROGRAMS="dropbear dropbearkey scp dbclient"
+export STATIC=1 MULTI=1 CC=arm-linux-eabi-gcc SCPPROGRESS=0 PROGRAMS="dropbear dropbearkey dbclient"
 make clean && make -j4 strip
 ```
 
