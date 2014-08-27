@@ -2,6 +2,12 @@
 ```
 xiaomienv.txt: for xiaomi adb shell env
 ```
+you can get your device env:
+```
+adb shell busybox env
+```
+then, remove `USER`,`RANDOM` and `_` avaluables
+the end, you should update these to `svr-chansession.c` by using `addnewvar()`
 
 # equipment
 ```
