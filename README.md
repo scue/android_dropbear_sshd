@@ -47,3 +47,4 @@ maybe you want to custom!
 1. for ssh-copy-id: [commit](http://200.200.0.36/28120/emm_droid_sshd/commit/84b51fb8557f522640368ffc1350a27092a20197)
 2. for shell env: [commit](http://200.200.0.36/28120/emm_droid_sshd/commit/54d8ed8b25e2a21497905b67d89e0e421e1c5fe1)
 3. for options: [commit](http://200.200.0.36/28120/emm_droid_sshd/commit/ade0deea924ad4fe0c9809f9e822e6d21168cc09)
+4. for scp: [commit](http://200.200.0.36/28120/emm_droid_sshd/commit/9666248660094adab092552eb42734b47d964e08)
