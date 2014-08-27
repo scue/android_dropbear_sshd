@@ -36,3 +36,8 @@ sudo apt-get install gcc-arm-linux-gnueabi
 export STATIC=1 MULTI=1 CC=arm-linux-eabi-gcc SCPPROGRESS=0 PROGRAMS="dropbear dropbearkey scp dbclient"
 make clean && make -j4 strip
 ```
+
+# files
+`scp`: copy file over ssh
+`sftp-server`: ftp server over ssh
+
