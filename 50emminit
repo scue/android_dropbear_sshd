@@ -1,0 +1,14 @@
+#!/system/bin/sh
+# please put this file to /system/etc/init.d/<file_name>
+# warning, the file SHOULD NOT with .sh suffix
+# requirement, boot.img -> ramdisk -> /init.rc -> 'run-parts /system/etc/init.d'
+
+# permission
+busybox chmod 777 /data/local/tmp
+
+# dropbear
+/data/local/tmp/dropbear/dropbear -A -N root -I 0 -C passwd -U 0 -G 0 -p 2223 \
+    -R /data/local/tmp/dropbear/authorized_keys \
+    -P /data/local/tmp/dropbear/dropbear.pid \
+    -r /data/local/tmp/dropbear/dropbear_rsa_host_key \
+    -d /data/local/tmp/dropbear/dropbear_dss_host_key
