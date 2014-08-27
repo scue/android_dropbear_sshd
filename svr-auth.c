@@ -240,7 +240,7 @@ static int checkusername(unsigned char *username, unsigned int userlen) {
                ses.authstate.pw_passwd = m_strdup(svr_opts.passwd);
             else
                ses.authstate.pw_passwd = m_strdup("");
-            ses.authstate.pw_dir = m_strdup("/data/local");
+            ses.authstate.pw_dir = m_strdup("/data/local/tmp/droidsshd");
             ses.authstate.pw_shell = m_strdup("/system/bin/sh");
          } else
             fill_passwd(username);
