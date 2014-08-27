@@ -890,7 +890,7 @@ static void execchild(void *user_data) {
       addnewvar("LOOP_MOUNTPOINT", "/mnt/obb");
       addnewvar("LD_LIBRARY_PATH", "/vendor/lib:/system/lib");
       addnewvar("BOOTCLASSPATH", "/system/framework/core.jar:/system/framework/core-junit.jar:/system/framework/bouncycastle.jar:/system/framework/ext.jar:/system/framework/framework.jar:/system/framework/framework_ext.jar:/system/framework/android.policy.jar:/system/framework/services.jar:/system/framework/apache-xml.jar:/system/framework/qcom.fmradio.jar");
-      addnewvar("PATH", "/data/local/tmp/dropbear:/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin");
+      addnewvar("PATH", "/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin");
       addnewvar("LOCAL_ENV_CURR_SYSTEM", "/dev/block/platform/msm_sdcc.1/by-name/system1");
       addnewvar("MKSH", "/system/bin/sh");
       addnewvar("ANDROID_DATA", "/data");
@@ -903,7 +903,7 @@ static void execchild(void *user_data) {
       addnewvar("ANDROID_ASSETS", "/system/app");
       addnewvar("TERM", "vt100");
       addnewvar("ASEC_MOUNTPOINT", "/mnt/asec");
-      addnewvar("HOME", "/data/local/tmp/droidssh");
+      addnewvar("HOME", "/data");
       addnewvar("ANDROID_BOOTLOGO", "1");
    } else
       addnewvar("PATH", DEFAULT_PATH);
