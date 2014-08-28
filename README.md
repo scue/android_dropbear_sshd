@@ -1,6 +1,6 @@
 # env
 ```
-xiaomienv.txt: for xiaomi adb shell env
+env.txt: for android adb shell env
 ```
 you can get your device env:
 ```
