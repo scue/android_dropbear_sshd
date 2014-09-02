@@ -1,3 +1,6 @@
+# about
+the ssh/sshd alternative for android.
+
 # env
 ```
 env.txt: for android adb shell env
