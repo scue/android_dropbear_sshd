@@ -22,8 +22,11 @@ self=$(readlink -f $0)
 self_dir=$(dirname $self)
 
 prebuilt_dir=$self_dir/prebuilt
-file_list=(${prebuilt_dir}/scp ${prebuilt_dir}/sftp-server dropbearmulti)
+file_list=(${prebuilt_dir}/scp ${prebuilt_dir}/sftp-server ${self_dir}/dropbearmulti)
 dropbear_home=/data/local/tmp/droidsshd
+
+busybox='busybox'
+# busybox='/data/data/com.magicandroidapps.bettertermpro/bin/busybox.exe'
 
 # requirement
 adb shell mkdir -p $dropbear_home
@@ -36,8 +39,9 @@ adb shell touch $dropbear_home/.ssh/authorized_keys
 # push
 echo '--- push'
 for i in ${file_list[@]}; do
-    adb push -p $self_dir/$i $dropbear_home/$i
-    adb shell busybox chmod a+x $dropbear_home/$i
+    rfile=$(basename $i)
+    adb push -p $i $dropbear_home/$rfile
+    adb shell $busybox chmod a+x $dropbear_home/$rfile
 done
 
 # symlink
@@ -47,7 +51,7 @@ adb shell ln -s $dropbear_home/dropbearmulti $dropbear_home/dropbearkey
 
  #show
 echo '--- files'
-adb shell busybox find $dropbear_home -type f -o -type l
+adb shell $busybox find $dropbear_home -type f -o -type l
 
 # genkey
 echo '--- genkey'
