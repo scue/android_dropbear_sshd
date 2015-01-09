@@ -31,18 +31,22 @@ sudo apt-get install gcc-arm-linux-gnueabi
     --disable-pututline \
     --disable-pututxline \
     --disable-lastlog \
-    CC=arm-linux-gnueabi-gcc
+    CC=arm-linux-gnueabi-gcc \
+    STRIP=arm-linux-gnueabi-strip
 ```
 
 # build
 ```
-export STATIC=1 MULTI=1 CC=arm-linux-eabi-gcc SCPPROGRESS=0 PROGRAMS="dropbear dropbearkey dbclient"
+export STATIC=1 MULTI=1 CC=arm-linux-gnueabi-gcc SCPPROGRESS=0 PROGRAMS="dropbear dropbearkey dbclient"
 make clean && make -j4 strip
 ```
 
 # files
+
 `scp`: copy file over ssh
+
 `sftp-server`: ftp server over ssh
+
 `dropbear_install.sh`: install dropbear to android
 
 # notes
