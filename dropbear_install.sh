@@ -61,6 +61,10 @@ adb shell $dropbear_home/dropbearkey -t dss -f $dropbear_home/etc/dropbear_dss_h
 # echo
 echo '--- please run in adb shell, with root:'
 cat <<-EOF
-$dropbear_home/dropbear -A -I 0 -U 0 -G 0 -N root -C passwd \\
+# Root
+$dropbear_home/dropbear -A -I 0 -U 0 -G 0 -P 3322 -N root -C passwd \\
+    -R $dropbear_home/.ssh/authorized_keys
+# Non-Root
+$dropbear_home/dropbear -A -I 0 -U 2000 -G 2000 -P 3322 -N shell -C passwd \\
     -R $dropbear_home/.ssh/authorized_keys
 EOF
