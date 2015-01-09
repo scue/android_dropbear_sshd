@@ -898,7 +898,6 @@ static void execchild(void *user_data) {
        addnewvar("EMULATED_STORAGE_TARGET", "/storage/emulated");
        addnewvar("SHELL", "/system/bin/sh");
        addnewvar("ANDROID_STORAGE", "/storage");
-       addnewvar("ANDROID_SOCKET_adbd", "10");
        addnewvar("ANDROID_PROPERTY_WORKSPACE", "9,32768");
        addnewvar("EXTERNAL_STORAGE", "/storage/emulated/legacy");
        addnewvar("ANDROID_ASSETS", "/system/app");
