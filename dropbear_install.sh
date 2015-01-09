@@ -21,7 +21,8 @@
 self=$(readlink -f $0)
 self_dir=$(dirname $self)
 
-file_list=(scp sftp-server dropbearmulti)
+prebuilt_dir=$self_dir/prebuilt
+file_list=(${prebuilt_dir}/scp ${prebuilt_dir}/sftp-server dropbearmulti)
 dropbear_home=/data/local/tmp/droidsshd
 
 # requirement
