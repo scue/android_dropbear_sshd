@@ -62,14 +62,15 @@ errsub(){
 # env
 get_device_env_and_change_srv(){
     tip "use my device env.."
-    locate srcfile='svr-chansession.c'
     adb shell $busybox env | sed '/^_/d;/adbd/d;/ADBD/d;/USER/d;/RANDOM/d' | \
         sed 's/\(.*\)=\(.*\)/       addnewvar\("\1","\2"\);/' |  tr -d '\011\015' | \
-        sed -r "s|(/system/bin)|\1:$dropbear_home|" > $save_env_file
+        sed -r "s|(/system/xbin)|\1:$dropbear_home|" > $save_env_file
     cat $save_env_file
-    git checkout $srcfile >/dev/null 2>&1
+    git checkout svr-chansession.c
     sed -i '889,907 d' svr-chansession.c
     sed -i "888 r $save_env_file" svr-chansession.c
+    git checkout options.h >/dev/null 2>&1
+    sed -ir '/DEFAULT_PATH/ s|:/bin|:/bin:'$dropbear_home'|' options.h
 }
 
 # apt-get
@@ -92,14 +93,16 @@ configure_and_build(){
         --disable-pututline \
         --disable-pututxline \
         --disable-lastlog \
-        CC=arm-linux-gnueabi-gcc
+        CC=arm-linux-gnueabi-gcc \
+        STRIP=arm-linux-gnueabi-strip
     export STATIC=1 MULTI=1 CC=arm-linux-eabi-gcc SCPPROGRESS=0 PROGRAMS="dropbear dropbearkey dbclient"
-    make clean && make -j4 strip
+    make clean && make -j4 strip || return 1
 }
 
 # requirement
 dropbear_install(){
     tip "Now, install dropbear .."
+    adb shell rm $dropbear_home
     adb shell mkdir -p $dropbear_home
     adb shell mkdir -p $dropbear_home/etc
     adb shell mkdir -p $dropbear_home/run
@@ -112,7 +115,7 @@ dropbear_install(){
     for i in ${file_list[@]}; do
         rfile=$(basename $i)
         adb push -p $i $dropbear_home/$rfile
-        adb shell $busybox chmod a+x $dropbear_home/$rfile
+        adb shell chmod 775 $dropbear_home/$rfile
     done
 
     # symlink
@@ -142,6 +145,6 @@ EOF
     tip "Done, enjoy!"
 }
 get_device_env_and_change_srv
-apt_dependences
-configure_and_build
+# apt_dependences
+configure_and_build || exit 1
 dropbear_install
